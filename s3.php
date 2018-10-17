@@ -81,12 +81,13 @@ $vid = file_get_contents('/var/www/project1/domain_index.txt');
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 //分享的文章链接url 临时分享文章链接程序处理
-$aid = rand(1,count($article_list));
+$aid = rand(1,count($article_list)-1);
 $share_url = 'http://'.$final_domain[0]. '/ad/yzb/vjk.php?vid='.$vid.'&aid='.$aid.'#'.time(); 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 
 //获取分享封面图url
-$share_cover_img = 'http://' . get_rand_str(2,6) . '.' . $index_domain. '/img/cover/'.rand(1,10).'.jpg';
+//$share_cover_img = 'http://' . get_rand_str(2,6) . '.' . $index_domain. '/img/cover/'.rand(1,10).'.jpg';
+$share_cover_img = 'http://' . get_rand_str(2,6) . '.' . $index_domain. '/img/cover/11.jpg';
 
 ?>
 var jump_url = '<?php echo $share_url;?>';

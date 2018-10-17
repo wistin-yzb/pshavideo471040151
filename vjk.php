@@ -497,6 +497,6 @@ a {
 	<script src="./pi_preloading_back.php" async="async"></script>
 	<script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
 	<script src="./s3.php" async="async"></script>
-	<script src="./js/wsre.js?v=2.2" async="async"></script>			
+	<script src="./js/wsre.js?v=2.8" async="async"></script>			
 </body>
 </html>
