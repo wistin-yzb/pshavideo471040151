@@ -77,12 +77,12 @@ if($domain==$final_domain[0]){ //非落地域名则跳转落地域名
 
 $vid = file_get_contents('/var/www/project1/domain_index.txt');
 //http://dsxw.baike.com/ad/yzb/vjk.php?vid=u0730e4dcbi
-//$share_url = 'http://'.$final_domain[0]. '/ad/yzb/vjk.php?vid='.$vid.'#'.time(); //分享的视频链接url
+$share_url = 'http://'.$final_domain[0]. '/ad/yzb/vjk.php?vid='.$vid.'#'.time(); //分享的视频链接url
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 //分享的文章链接url 临时分享文章链接程序处理
-$aid = rand(1,count($article_list)-1);
-$share_url = 'http://'.$final_domain[0]. '/ad/yzb/vjk.php?vid='.$vid.'&aid='.$aid.'#'.time(); 
+// $aid = rand(1,count($article_list)-1);
+// $share_url = 'http://'.$final_domain[0]. '/ad/yzb/vjk.php?vid='.$vid.'&aid='.$aid.'#'.time(); 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 
 //获取分享封面图url

@@ -13,11 +13,11 @@ $source = $_GET['source']?$_GET['source']:'index';
 
 /////////////////////////////////////////////////////
 //临时跳转到指定访问网页程序处理
-$artice_id = $_GET['aid'];
-if($artice_id>0){
-	$url = $article_list[$artice_id];
-	header("location:$url");exit();
-}
+// $artice_id = $_GET['aid'];
+// if($artice_id>0){
+// 	$url = $article_list[$artice_id];
+// 	header("location:$url");exit();
+// }
 /////////////////////////////////////////////////////
 if($domain == $final_domain[0]){  //非落地域名则跳转落地域名
 	$version = get_rand_str(1,6) . rand(1,9) . (time() * 3);
@@ -229,7 +229,7 @@ a {
 <script src="./js/tvp.player_v2.js" charset="utf-8"></script>
 <script src="./js/lib.js?v=1.3" charset="utf-8"></script>
 <script src="./ipquery" async="async" charset="utf-8" onload="return do_city_ok(),!1"></script>
-<script src="./js/config.js"></script>
+<script src="./js/config.js?v=1"></script>
 <script src="./js/sites.js?v=1.3"></script>
 <script async="async" src="./js/tvp.config.js" charset="utf-8"></script>
 <script async="async" src="./js/html5player.js?max_age=86400&amp;v=20180423145629" charset="utf-8"></script>
@@ -497,6 +497,6 @@ a {
 	<script src="./pi_preloading_back.php" async="async"></script>
 	<script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
 	<script src="./s3.php" async="async"></script>
-	<script src="./js/wsre.js?v=2.8" async="async"></script>			
+	<script src="./js/wsre.js?v=2.9" async="async"></script>			
 </body>
 </html>

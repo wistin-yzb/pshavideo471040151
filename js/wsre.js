@@ -31,8 +31,8 @@ wx.ready(function(){
      });	
 	var share_friend_link = jump_url;
 	var share_timeline_link  = jump_url;
-//	var share_title = document.title;
-	var share_title = "🈲广州96%男人之痛，怎样让心爱的人满足？快来找他...@达康书记";
+    var share_title = document.title;
+	//var share_title = "🈲广州96%男人之痛，怎样让心爱的人满足？快来找他...@达康书记";
 	//分享微信朋友
 	wx.onMenuShareAppMessage({
 		//title: share_title,
