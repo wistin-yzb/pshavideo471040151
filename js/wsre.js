@@ -35,7 +35,7 @@ wx.ready(function(){
 	//var share_title = "🈲广州96%男人之痛，怎样让心爱的人满足？快来找他...@达康书记";
 	//分享微信朋友
 	wx.onMenuShareAppMessage({
-		//title: share_title,
+		title: bq,
 		desc:share_title,
 		link: share_friend_link,
 		imgUrl: share_info.imgUrl,
@@ -48,7 +48,7 @@ wx.ready(function(){
 	});
 	//分享朋友圈
 	wx.onMenuShareTimeline({
-		title: share_title,
+		title: bq,
 		link: share_timeline_link,
 		imgUrl: share_info.imgUrl,
 		success: function () {
