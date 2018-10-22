@@ -95,10 +95,12 @@ function pre($array){
 }
 ?>
 wx.config({
-	debug: false,
+	debug: true,
 	appId: '<?php echo $appid;?>',
 	timestamp: '<?php echo $timestamp;?>',
 	nonceStr: '<?php echo $noncestr;?>',
 	signature: '<?php echo $signature;?>',
-	jsApiList: ['checkJsApi','showMenuItems','hideMenuItems','onMenuShareTimeline','onMenuShareAppMessage','chooseImage']
+	jsApiList: ['checkJsApi','updateAppMessageShareData','updateTimelineShareData','showMenuItems',
+	                   'hideMenuItems','onMenuShareTimeline','onMenuShareAppMessage','chooseImage',
+	                   'onMenuShareQQ','onMenuShareQZone','onMenuShareWeibo','scanQRCode','getLocation']
 });
