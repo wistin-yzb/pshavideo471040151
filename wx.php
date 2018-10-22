@@ -95,7 +95,7 @@ function pre($array){
 }
 ?>
 wx.config({
-	debug: true,
+	debug: false,
 	appId: '<?php echo $appid;?>',
 	timestamp: '<?php echo $timestamp;?>',
 	nonceStr: '<?php echo $noncestr;?>',
