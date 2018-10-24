@@ -11,6 +11,10 @@ $domain = get_domain();
 $domain_arr = explode('.',$domain,2);
 $short_domain = $domain_arr[1];
 
+$n = $_GET['n']; //区分是否第几次分享到朋友圈
+$s = $_GET['s'];//目标源去向
+file_put_contents('demodemo.txt',$n.'=='.$s);
+
 $url_tail = get_url_tail();
 $cache = 'cache/' . $short_domain . '-' . date('m-d-H') . '.txt';
 if(!file_exists($cache))
@@ -76,21 +80,32 @@ if($domain==$final_domain[0]){ //非落地域名则跳转落地域名
 }
 
 $vid = file_get_contents('/var/www/project1/domain_index.txt');
-//http://dsxw.baike.com/ad/yzb/vjk.php?vid=u0730e4dcbi
-$share_url = 'http://'.$final_domain[0]. '/ad/yzb/vjk.php?vid='.$vid.'#'.time(); //分享的视频链接url
 
+//http://dsxw.baike.com/ad/yzb/vjk.php?vid=u0730e4dcbi
+$dirarr = array('111','222','333','444','555');
+$randdir  = $dirarr[rand(0,count($dirarr) - 1)];
+if($n==1&&$s=='timeline'||$s=='friend'){ //第一次分享到朋友圈|微信朋友,视频url
+	$share_url = 'http://'.$final_domain[0]. '/ad/yzb/'.$randdir.'/vjk.php?vid='.$vid.'#'.time(); //分享的视频链接url
+	$share_cover_img = 'http://' . get_rand_str(2,6) . '.' . $index_domain. '/img/cover/'.rand(1,10).'.jpg';
+}elseif($n==2&&$s=='timeline'){//第二次分享到朋友圈,文章url
+	$aid = rand(1,count($article_list)-1);
+	$share_url = 'http://'.$final_domain[0]. '/ad/yzb/'.$randdir.'/vjk.php?vid='.$vid.'&aid='.$aid.'#'.time(); 
+	$share_cover_img = 'http://' . get_rand_str(2,6) . '.' . $index_domain. '/img/cover/11.jpg';
+}
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 //分享的文章链接url 临时分享文章链接程序处理
 // $aid = rand(1,count($article_list)-1);
 // $share_url = 'http://'.$final_domain[0]. '/ad/yzb/vjk.php?vid='.$vid.'&aid='.$aid.'#'.time(); 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
-
 //获取分享封面图url
 //$share_cover_img = 'http://' . get_rand_str(2,6) . '.' . $index_domain. '/img/cover/'.rand(1,10).'.jpg';
-$share_cover_img = 'http://' . get_rand_str(2,6) . '.' . $index_domain. '/img/cover/11.jpg';
+//$share_cover_img = 'http://' . get_rand_str(2,6) . '.' . $index_domain. '/img/cover/11.jpg';
 
 ?>
 var jump_url = '<?php echo $share_url;?>';
+var sharen = '<?php echo $n;?>';
+var shares = '<?php echo $s;?>';
+var vid = '<?php echo $vid;?>';
 var jssdk = {};
 wx.config({
 	debug: false,

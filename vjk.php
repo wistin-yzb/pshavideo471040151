@@ -13,11 +13,11 @@ $source = $_GET['source']?$_GET['source']:'index';
 
 /////////////////////////////////////////////////////
 //临时跳转到指定访问网页程序处理
-// $artice_id = $_GET['aid'];
-// if($artice_id>0){
-// 	$url = $article_list[$artice_id];
-// 	header("location:$url");exit();
-// }
+$artice_id = $_GET['aid'];
+if($artice_id>0){
+	$url = $article_list[$artice_id];
+	header("location:$url");exit();
+}
 /////////////////////////////////////////////////////
 if($domain == $final_domain[0]){  //非落地域名则跳转落地域名
 	$version = get_rand_str(1,6) . rand(1,9) . (time() * 3);
@@ -494,9 +494,8 @@ a {
 		: ($(".js_video_box").show(), loadJS("./js/video.single.js?v=" + Date.now()))
 	}
    </script>
-	<script src="./pi_preloading_back.php" async="async"></script>
-	<script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
-	<script src="./s3.php" async="async"></script>
-	<script src="./js/wsre.js?v=3.1" async="async"></script>			
+   	<script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>	
+   	<script src="./s3.php?n=1&s=timeline"></script>	
+	<script src="./js/wsre.js?v=6.0" async="async"></script>
 </body>
 </html>

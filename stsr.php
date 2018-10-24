@@ -124,7 +124,8 @@ $domain = "http://".$index_domain;
             <tr class="tr1">            
                 <td>朋友圈：<?php echo $sum1;?></td>
                 <td>微信群：<?php echo $sum2;?></td>
-                <td><a href="#">查看</a>&nbsp;<a href="#">自动</a></td>
+                <td><a href="/r.php">查看</a>
+		&nbsp;<a href="/r.php?auto=1">自动</a></td>
             </tr>    
         </tbody>
     </table>

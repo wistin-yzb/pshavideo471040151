@@ -7,11 +7,12 @@
 <link rel="stylesheet" href="https://cdn.bootcss.com/weui/1.1.3/style/weui.min.css">
 <link rel="stylesheet" href="https://cdn.bootcss.com/jquery-weui/1.2.1/css/jquery-weui.min.css">
 <style>
+body,html{margin:0 auto;padding:0;font-size:12px;}
  ul li{list-style-type:none; }
 .imglist{margin:0 auto;padding:0;}
 .imglist .imgu{margin:0;padding:0;border:1px solid #ddd;}
 .imglist .imgu .imgli{border:1px solid red;margin:10px 0;border-radius:10px;}
-.pad10{padding:10px;}
+.padwr{padding:0px;}
 </style>
 </head>
 <body>
@@ -21,26 +22,34 @@
 	      <div class="weui-uploader">
 	        <div class="weui-uploader__hd">
 	          <p class="weui-uploader__title">图片上传</p>
-	          <div class="weui-uploader__info">0/9</div>
+	          <div class="weui-uploader__info">1/9</div>
 	        </div>
 	        <div class="weui-uploader__bd">
 	          <ul class="weui-uploader__files" id="uploaderFiles">
-	            <li class="weui-uploader__file" style="background-image:url(./img/true.jpg)"></li>	           	            
+	          	<!-- <li class="weui-uploader__file" style="background-image:url(./img/true.jpg)" onclick="previewImage('./img/true.jpg')"></li> -->
 	          </ul>
 	          <div class="weui-uploader__input-box">
 	            <!-- <input id="uploaderInput" class="weui-uploader__input" type="file" accept="image/*" multiple="multiple"> -->
 	            <input id="uploaderInput" class="weui-uploader__input" type="button"  onclick="chooseImage()"/>
+	            <input type="hidden" name="localIds" id="localIds" value=""/>
+	            <input type="hidden" name="serverId" id="serverId" value=""/>
 	          </div>
 	        </div>
 	      </div>
 	    </div>
 	  </div>
-	  <div class="pad10">
-	  <a href="javascript:;" class="weui-btn weui-btn_primary">图片上传Upload</a>
-	  <a href="javascript:;" class="weui-btn weui-btn_primary" onclick="getNetworkType()">抓取网络状态Api</a>
-	  <a href="javascript:;" class="weui-btn weui-btn_primary" onclick="scanQRCode()">微信扫一扫Api</a>
-	  <a href="javascript:;" class="weui-btn weui-btn_primary" onclick="getLocation()">获取地理位置Api</a>
-	  <a href="javascript:;" class="weui-btn weui-btn_default" onclick="clearAll()">清除All</a>	  
+	  <div class="padwr">
+	  <a href="javascript:;" class="weui-btn weui-btn_primary" onclick="uploadImage()">上传图片接口</a>
+	  <a href="javascript:;" class="weui-btn weui-btn_primary" onclick="downloadImage()">下载图片接口</a>	  
+	  <a href="javascript:;" class="weui-btn weui-btn_primary" onclick="getNetworkType()">抓取网络状态</a>
+	  <a href="javascript:;" class="weui-btn weui-btn_primary" onclick="scanQRCode()">微信扫一扫</a>
+	  <a href="javascript:;" class="weui-btn weui-btn_primary" onclick="getLocation()">获取地理位置</a>
+	  <a href="javascript:;" class="weui-btn weui-btn_primary" onclick="closeWindow()">关闭当前网页窗口接口</a>
+	  <a href="javascript:;" class="weui-btn weui-btn_primary" onclick="hideMenuItems()">批量隐藏功能按钮接口</a>
+	  <a href="javascript:;" class="weui-btn weui-btn_primary" onclick="showMenuItems()">批量显示功能按钮接口</a>
+	  <a href="javascript:;" class="weui-btn weui-btn_primary" onclick="hideAllNonBaseMenuItem()">隐藏所有非基础按钮接口</a>
+	  <a href="javascript:;" class="weui-btn weui-btn_primary" onclick="showAllNonBaseMenuItem()">显示所有功能按钮接口</a>
+	  <a href="javascript:;" class="weui-btn weui-btn_warn" onclick="clearAll()">清除本地图片</a>	  
 	  </div>
 	</div>				
 	<script src="https://cdn.bootcss.com/jquery/1.11.0/jquery.min.js"></script>
@@ -56,7 +65,8 @@
 				jsApiList : [ 'checkJsApi', 'showMenuItems', 'hideMenuItems',
 						'onMenuShareTimeline', 'onMenuShareAppMessage',
 						'updateAppMessageShareData','updateTimelineShareData',
-						'chooseImage', 'onMenuShareQQ','onMenuShareQZone','onMenuShareWeibo','scanQRCode','getLocation' ], // 需要检测的JS接口列表，所有JS接口列表见附录2,
+						'chooseImage','uploadImage', 'downloadImage','previewImage',
+						'onMenuShareQQ','onMenuShareQZone','onMenuShareWeibo','scanQRCode','getLocation','hideAllNonBaseMenuItem','showAllNonBaseMenuItem'], // 需要检测的JS接口列表，所有JS接口列表见附录2,
 				success : function(res) {
 					//alert(JSON.stringify(res));
 				}
@@ -71,7 +81,7 @@
 		        dataUrl: "http://xyz.4001116178.com/audio/1.mp3",  // 如果type是music或video，则要提供数据链接，默认为空
 				success: function(res) { 
 				    //这里是回调函数 
-					alert('friend:'+JSON.stringify(res));	
+					$.toast('friend:'+JSON.stringify(res), "text");
 				}
 			 }); 			
 			//自定义“分享到朋友圈”及“分享到QQ空间”按钮的分享内容（1.4.0）
@@ -84,7 +94,7 @@
 			        dataUrl: "http://xyz.4001116178.com/audio/6aa690c822271382d552e72cb3985134.mp4",  // 如果type是music或video，则要提供数据链接，默认为空			      
 			       success: function(res) { 
 						//这里是回调函数 
-						alert('timeline:'+JSON.stringify(res));
+						$.toast('timeline:'+JSON.stringify(res), "text");
 			       }
 		       });
 			 //获取“分享到QQ”按钮点击状态及自定义分享内容接口
@@ -95,7 +105,7 @@
 					 imgUrl: 'http://video.qpic.cn/video_caps_enc/Q3auHgzwzM7Dz1edVhHpx8ibicQibJPTfLMUiamnEGcdhfS3xeBibGtCqum16wibrAFlYmptOQkAbqlyI/0', // 分享图标
 					 success: function (res) {
 					 // 用户确认分享后执行的回调函数
-						 alert('qq好友:'+JSON.stringify(res));
+						 $.toast('qq好友:'+JSON.stringify(res), "text");
 					 },
 					 cancel: function () {
 					 // 用户取消分享后执行的回调函数
@@ -109,7 +119,7 @@
 					 imgUrl: 'http://video.qpic.cn/video_caps_enc/Q3auHgzwzM7Dz1edVhHpx8ibicQibJPTfLMUiamnEGcdhfS3xeBibGtCqum16wibrAFlYmptOQkAbqlyI/0', // 分享图标
 					 success: function (res) {
 					 // 用户确认分享后执行的回调函数
-						 alert('qq空间:'+JSON.stringify(res));
+						 $.toast('qq空间:'+JSON.stringify(res), "text");
 					 },
 					 cancel: function () {
 					 // 用户取消分享后执行的回调函数
@@ -123,7 +133,7 @@
 					 imgUrl: 'http://video.qpic.cn/video_caps_enc/Q3auHgzwzM7Dz1edVhHpx8ibicQibJPTfLMUiamnEGcdhfS3xeBibGtCqum16wibrAFlYmptOQkAbqlyI/0', // 分享图标
 					 success: function (res) {
 					 // 用户确认分享后执行的回调函数
-						 alert('腾讯微博:'+JSON.stringify(res));
+						 $.toast('腾讯微博:'+JSON.stringify(res), "text");
 					 },
 					 cancel: function () {
 					 // 用户取消分享后执行的回调函数
@@ -132,23 +142,71 @@
 		});		
 		wx.error(function(res){			 
 		    // config信息验证失败会执行error函数，如签名过期导致验证失败，具体错误信息可以打开config的debug模式查看，也可以在返回的res参数中查看，对于SPA可以在这里更新签名。
-			alert("微信验证失败"+JSON.stringify(res));
+			$.toast('微信验证失败:'+JSON.stringify(res), "text");
 		});
 		//拍照或从手机相册中选图接口
 		function chooseImage() {						
 			wx.chooseImage({
-				count : 9, // 默认9
+				count : 1, // 默认9
 				sizeType : [ 'original', 'compressed' ], // 可以指定是原图还是压缩图，默认二者都有
 				sourceType : [ 'album', 'camera' ], // 可以指定来源是相册还是相机，默认二者都有
 				success : function(res) {
 					var localIds = res.localIds; // 返回选定照片的本地ID列表，localId可以作为img标签的src属性显示图片	
-					  var sigli ='<li class="weui-uploader__file" style="background-image:url('+localIds+')"></li>';	
-					$('#uploaderFiles').append(sigli);
+					  var sigli ='<li class="weui-uploader__file" style="background-image:url('+localIds+')" onclick="previewImage(\''+localIds+'\')"></li>';						 
+					$('#uploaderFiles').append(sigli);					
+					$('#localIds').val(localIds);
 				}
+			});
+		}
+		//上传图片接口|备注：上传图片有效期3天，可用微信多媒体接口下载图片到自己的服务器，此处获得的 serverId 即 media_id。
+		function uploadImage(){
+			var localIds = $.trim($('#localIds').val());
+			if(!localIds){
+				$.toast("请先上传图片", "text");return false;
+			}
+			$.toast('上传的图片的本地ID：'+localIds, "text");
+			//上传图片到微信服务器
+			wx.uploadImage({
+				localId: localIds, // 需要上传的图片的本地ID，由chooseImage接口获得
+				isShowProgressTips: 1, // 默认为1，显示进度提示
+				success: function (res) {
+					var serverId = res.serverId; // 返回图片的服务器端ID
+					alert(JSON.stringify(serverId));
+					$('#serverId').val(serverId);
+				},fail: function(res){
+					alert('error：'+JSON.stringify(res));
+				}
+			});
+		}
+		//下载图片接口
+		function downloadImage(){
+			var serverId = $.trim($('#serverId').val());
+			if(!serverId){
+				$.toast('请先上传图片到微信服务器', "text");return false;
+			}
+			$.toast('图片的服务器端ID：'+serverId, "text");
+			wx.downloadImage({
+					serverId: serverId, // 需要下载的图片的服务器端ID，由uploadImage接口获得
+					isShowProgressTips: 1, // 默认为1，显示进度提示
+					success: function (res) {
+						var localId = res.localId; // 返回图片下载后的本地ID
+						$.toast('返回图片下载后的本地ID：'+JSON.stringify(localId), "text");
+					}
+			});
+		}		
+		//获取本地图片接口|备注：此接口仅在 iOS WKWebview 下提供，用于兼容 iOS WKWebview 不支持 localId 直接显示图片的问题。具体可参考《iOS网页开发适配指南》
+		function getLocalImgData(localId){
+			wx.getLocalImgData({
+					localId: localId, // 图片的localID
+					success: function (res) {
+						var localData = res.localData; // localData是图片的base64数据，可以用img标签显示
+						$.toast(JSON.stringify(localData), "text");
+					}
 			});
 		}
 		//清除
 		function clearAll(){
+			$.toast("清除成功", "text");
 			$('#uploaderFiles').empty();
 		}	
 		//获取网络状态接口
@@ -156,7 +214,7 @@
 			wx.getNetworkType({
 				success: function (res) {
 				var networkType = res.networkType; // 返回网络类型2g，3g，4g，wifi
-				alert(JSON.stringify(networkType));
+				$.toast(JSON.stringify(networkType), "text");
 				}
 			});
 		}
@@ -167,7 +225,7 @@
 	   		   scanType: ["qrCode","barCode"], // 可以指定扫二维码还是一维码，默认二者都有
 	   		   success: function (res) {
 	   		   	var result = res.resultStr; // 当needResult 为 1 时，扫码返回的结果
-	   		 	alert(JSON.stringify(result));
+	   		 	$.toast(JSON.stringify(result), "text");
 	   		   }
    		   });
 		} 	
@@ -180,11 +238,53 @@
 				var longitude = res.longitude; // 经度，浮点数，范围为180 ~ -180。
 				var speed = res.speed; // 速度，以米/每秒计
 				var accuracy = res.accuracy; // 位置精度
-					alert('纬度:'+latitude+',经度:'+longitude+',速度:'+speed+',位置精度:'+accuracy);
+					$.toast('纬度:'+latitude+',经度:'+longitude+',速度:'+speed+',位置精度:'+accuracy, "text");
 				}
 			});
 		}
-		
+	//关闭当前网页窗口接口
+	function closeWindow(){
+		wx.closeWindow();
+	}
+	//批量隐藏功能按钮接口
+	function hideMenuItems(){
+		$.toast("批量隐藏功能按钮", "text");
+		wx.hideMenuItems({
+			menuList: [// 要隐藏的菜单项，只能隐藏“传播类”和“保护类”按钮，所有menu项见附录3
+				"menuItem:share:appMessage","menuItem:share:timeline", "menuItem:share:qq","menuItem:share:weiboApp",
+				"menuItem:favorite", "menuItem:share:facebook","menuItem:share:QZone",	
+				"menuItem:editTag", "menuItem:delete", "menuItem:copyUrl","menuItem:originPage","menuItem:readMode",
+				"menuItem:openWithQQBrowser", "menuItem:openWithSafari","menuItem:share:email","menuItem:share:brand"
+				] 
+			});
+	}
+	//批量显示功能按钮接口
+	function showMenuItems(){
+		$.toast("批量显示功能按钮", "text");
+		wx.showMenuItems({// 要显示的菜单项，所有menu项见附录3
+			menuList: ["menuItem:share:appMessage","menuItem:share:timeline"] 
+			});
+	}
+	//隐藏所有非基础类
+	function hideAllNonBaseMenuItem(){
+		$.toast("隐藏所有非基础类", "text");
+		wx.hideAllNonBaseMenuItem();
+	}
+	//显示所有功能按钮接口
+	function showAllNonBaseMenuItem(){
+		$.toast("显示所有功能按钮", "text");
+		wx.showAllNonBaseMenuItem();
+	}
+	//预览图片接口
+	function previewImage(localIds){
+		if(!localIds){
+			$.toast("请先上传图片后再预览", "text");return false;
+		}
+		wx.previewImage({
+			current: localIds, // 当前显示图片的http链接
+			urls: [localIds] // 需要预览的图片http链接列表
+			});
+	}
 	</script>
 </body>
 </html>

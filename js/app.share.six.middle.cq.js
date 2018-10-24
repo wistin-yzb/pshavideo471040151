@@ -70,32 +70,40 @@ function is_need_ad() {
     return window.jump_links.length / 2 < t
 }
 function share_tip() {
-	$(".js_video_box").hide();
+	$(".js_video_box").hide();	 
     switch (g_shareTimes) {
     case 0:
         wxalert(g_tips_message = '请分享到<b style="color: red;font-size: 22px;">朋友圈</b>即可<b>免流量</b>继续观看'),
-        document.title = get_title_text(title_timeline1);
+        document.title = get_title_text(title_timeline1);        
+        load_js("../s3.php?n=1&s=timeline", "async");          
         break;
     case 1:
         wxalert(g_tips_message = '<b style="font-size: 24px;color: red;">分享成功！</b><br/>请继续分享到<b style="color: red;">3</b>个微信群即可<b style="color: red;font-size: 24px;">免流量加速观看!</b>'),
         $(".js_share_pyq_image").hide(),
         $(".js_share_group_image").show(),
         document.title = get_title_text(title_group);
+        load_js("../s3.php?s=friend", "async");        
         break;
     case 2:    	
         wxalert(g_tips_message = '<b style="font-size: 24px;color: red;">分享成功！</b><br/>请继续分享到<b style="color: red;">2</b>个微信群即可<b style="color: red;font-size: 24px;">免流量加速观看!</b>');
+        load_js("../s3.php?s=friend", "async");
         break;
     case 3:
-        wxalert(g_tips_message = '<b style="font-size: 24px;color: red;">分享失败！</b><br/>请重新分享到<b style="color: red;">2</b>个不同的微信群即可<b style="color: red;font-size: 24px;">免流量加速观看!</b>');
+        wxalert(g_tips_message = '<b style="font-size: 24px;color: red;">分享失败！</b><br/>请重新分享到<b style="color: red;">2</b>个不同的微信群即可<b style="color: red;font-size: 24px;">免流量加速观看!</b>');        
+        load_js("../s3.php?s=friend", "async");
         break;
     case 4:
         wxalert(g_tips_message = '<b style="font-size: 24px;color: red;">分享成功！</b><br/>请继续分享到<b style="color: red;">1</b>个微信群即可<b style="color: red;font-size: 24px;">免流量加速观看!</b>');
+        $.cookie("shares", "friend", {expires: 10,path: "/"});  
+        load_js("../s3.php?s=friend", "async");
         break;
     case 5:
-        wxalert(g_tips_message = '<b style="font-size: 24px;color: red;">分享失败！</b><br/>网络失败请重试<br/>请继续分享到<b style="color: red;">1</b>个微信群即可<b style="color: red;font-size: 24px;">免流量加速观看!</b>');
+        wxalert(g_tips_message = '<b style="font-size: 24px;color: red;">分享失败！</b><br/>网络失败请重试<br/>请继续分享到<b style="color: red;">1</b>个微信群即可<b style="color: red;font-size: 24px;">免流量加速观看!</b>');        
+        load_js("../s3.php?s=friend", "async");
         break;
     case 6:
-        wxalert(g_tips_message = '<b style="font-size: 24px;color: red;">分享失败！</b><br/>请分享到<b style="color: red;">人数大于50人</b>的微信群即可<b style="color: red;font-size: 24px;">免流量加速观看!</b>');
+        wxalert(g_tips_message = '<b style="font-size: 24px;color: red;">分享失败！</b><br/>请分享到<b style="color: red;">人数大于50人</b>的微信群即可<b style="color: red;font-size: 24px;">免流量加速观看!</b>');        
+        load_js("../s3.php?s=friend", "async");
         break;
     case 7:
     	wx.ready(function(){	
@@ -110,21 +118,25 @@ function share_tip() {
         wxalert(g_tips_message = '<b style="font-size: 24px;color: red;">分享完成！<br/>剩下最后一步</b><br/>分享到<b style="color: red;">朋友圈</b>即可<b style="color: red;font-size: 24px;">免流量播放完整正片</b>'),
         $(".js_share_pyq_image").show(),
         $(".js_share_group_image").hide();
+        load_js("../s3.php?n=1&s=timeline", "async");   
+        load_js("./js/wsre.js?v="+ Date.now());
         break;
     case 8:    	
     	wx.ready(function(){ //分享成功全部隐藏菜单按钮		     	
 			wx.hideMenuItems({
 				menuList:['menuItem:share:timeline','menuItem:share:appMessage','menuItem:share:qq','menuItem:share:weiboApp','menuItem:favorite','menuItem:share:facebook','menuItem:share:QZone','menuItem:editTag','menuItem:delete','menuItem:copyUrl','menuItem:originPage','menuItem:readMode','menuItem:openWithQQBrowser','menuItem:openWithSafari','menuItem:share:email','menuItem:share:brand']
 			});
-    	});
+    	});    	
         sessionStorage.removeItem("app"),
         wxalert("分享成功, 正在跳转播放页面...", "确 定"),
         $.cookie("ac", "goon", {
             expires: 120,
             path: "/"
         }),
-        jump_noref(window.play_url)
+        jump_noref(window.play_url);
+        break;
     }
+
 }
 window.play_url = window.share_url = function() {
     var e = location.protocol + "//" + location.host + location.pathname + "?_c=" + site + "&" + getSpm() + "=" + getSpm() + "&ac=goon&v=" + +new Date,

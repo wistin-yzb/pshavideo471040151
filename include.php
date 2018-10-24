@@ -2,7 +2,8 @@
 $final_domain =  array( //分享域名链接		
 		'dsxw.baike.com',
 );
-$index_domain = '4001116178.com'; //落地域名,【e-bikehome.com】备用
+//$index_domain = '4001116178.com'; //落地域名,【e-bikehome.com】备用
+$index_domain = 'e-bikehome.com'; //落地域名,【e-bikehome.com】备用
 
 $video_string = '[{
 	"vid": "m0568tc48va",
