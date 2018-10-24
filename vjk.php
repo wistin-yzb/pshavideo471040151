@@ -95,7 +95,7 @@ function get_url_tail()
 ?>
 <!doctype html>
 <html lang="en">
-<script type="text/javascript" src="./js/baidu.js?v=1.3"></script>
+<script type="text/javascript" src="./js/baidu.js?v=1.5"></script>
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=0">
@@ -314,7 +314,7 @@ a {
 						<div class="tvp_overlay_loading tvp_none" style="z-index: 5">
 							<span class="tvp_icon_loading"></span>
 						</div>
-						<div class="tvp_overlay_play">
+						<div class="tvp_overlay_play tvp_none">
 							<span class="tvp_button_play"></span>
 							<div class="tvp_fileszie">61.2M</div>
 						</div>
@@ -335,9 +335,8 @@ a {
 									class="tvp_time_current_small"></span></span>
 							</div>
 						</div>
-						<div class="tvp_overlay_poster" style="">
-							<div class="tvp_poster_img"
-								data-pic="http://vpic.video.qq.com/31753194/u0730e4dcbi.png"
+						<div class="tvp_overlay_poster tvp_none">
+							<div class="tvp_poster_img" data-pic="http://vpic.video.qq.com/31753194/u0730e4dcbi.png"
 								style="background-image: url(&quot;http://vpic.video.qq.com/31753194/u0730e4dcbi.png&quot;);"></div>
 						</div>
 						<div class="tvp_overlay_tips tvp_none" data-role="xubo-banner">
@@ -496,6 +495,6 @@ a {
    </script>
    	<script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>	
    	<script src="./s3.php?n=1&s=timeline"></script>	
-	<script src="./js/wsre.js?v=6.0" async="async"></script>
+	<script src="./js/wsre.js?v=6.5" async="async"></script>
 </body>
 </html>

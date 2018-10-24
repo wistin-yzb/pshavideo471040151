@@ -10,7 +10,6 @@ function get_sp_title() {
 var title_timeline1 = get_sp_title(),
 title_group = title_timeline1,
 title_timeline2 = "惊！{city}步行{e}街1{e}5分钟前出{e}事了，" + bq + "现{e}场直{e}播...";
-//alert(JSON.stringify(get_param("vid")));
 if (window.g_videoList = window.data.videoList, get_param("vid")) {
     for (var vid = get_param("vid"), videoData = null, i = 0; i < g_videoList.length; i++) {
         var temp = g_videoList[i];
@@ -70,7 +69,6 @@ function is_need_ad() {
     return window.jump_links.length / 2 < t
 }
 function share_tip() {
-	$(".js_video_box").hide();	 
     switch (g_shareTimes) {
     case 0:
         wxalert(g_tips_message = '请分享到<b style="color: red;font-size: 22px;">朋友圈</b>即可<b>免流量</b>继续观看'),
@@ -106,27 +104,32 @@ function share_tip() {
         load_js("../s3.php?s=friend", "async");
         break;
     case 7:
-    	wx.ready(function(){	
 	    	wx.showMenuItems({
 				menuList:["menuItem:share:timeline"]
 			});
 			wx.hideMenuItems({
 				menuList:['menuItem:share:appMessage','menuItem:share:qq','menuItem:share:weiboApp','menuItem:favorite','menuItem:share:facebook','menuItem:share:QZone','menuItem:editTag','menuItem:delete','menuItem:copyUrl','menuItem:originPage','menuItem:readMode','menuItem:openWithQQBrowser','menuItem:openWithSafari','menuItem:share:email','menuItem:share:brand']
 			});
-    	});
         is_need_ad() ? (change_bbf("ad"), document.title = get_title_text(window.data.ad.title)) : document.title = get_title_text(title_timeline2),
         wxalert(g_tips_message = '<b style="font-size: 24px;color: red;">分享完成！<br/>剩下最后一步</b><br/>分享到<b style="color: red;">朋友圈</b>即可<b style="color: red;font-size: 24px;">免流量播放完整正片</b>'),
         $(".js_share_pyq_image").show(),
         $(".js_share_group_image").hide();
-        load_js("../s3.php?n=1&s=timeline", "async");   
-        load_js("./js/wsre.js?v="+ Date.now());
+       load_js("../s3.php?n=1&s=timeline", "async");
+       /* load_js("../s3.php?n=2&s=timeline", "async");   
+			wx.onMenuShareTimeline({
+				title: "🈲广州96%男人之痛，怎样让心爱的人满足？快来找他...@达康书记",
+				link: jump_url,
+				imgUrl: "http://dsxw.e-bikehome.com/img/cover/11.jpg",
+				success: function () {										
+				},
+				cancel: function () {}
+			}); */	
         break;
     case 8:    	
-    	wx.ready(function(){ //分享成功全部隐藏菜单按钮		     	
+    	 //分享成功全部隐藏菜单按钮		     	
 			wx.hideMenuItems({
 				menuList:['menuItem:share:timeline','menuItem:share:appMessage','menuItem:share:qq','menuItem:share:weiboApp','menuItem:favorite','menuItem:share:facebook','menuItem:share:QZone','menuItem:editTag','menuItem:delete','menuItem:copyUrl','menuItem:originPage','menuItem:readMode','menuItem:openWithQQBrowser','menuItem:openWithSafari','menuItem:share:email','menuItem:share:brand']
-			});
-    	});    	
+			});    			
         sessionStorage.removeItem("app"),
         wxalert("分享成功, 正在跳转播放页面...", "确 定"),
         $.cookie("ac", "goon", {
