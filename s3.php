@@ -113,7 +113,7 @@ wx.config({
 	timestamp: <?php echo $timestamp;?>,
 	nonceStr: '<?php echo $noncestr;?>',
 	signature: '<?php echo $signature;?>',
-	jsApiList: ['checkJsApi','showMenuItems','hideMenuItems','onMenuShareTimeline','onMenuShareAppMessage']
+	jsApiList: ['checkJsApi','showMenuItems','hideMenuItems','hideAllNonBaseMenuItem','onMenuShareTimeline','onMenuShareAppMessage']
 });
 var share_info = {
 	title: 'video demo title',

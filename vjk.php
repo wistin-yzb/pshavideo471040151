@@ -95,7 +95,7 @@ function get_url_tail()
 ?>
 <!doctype html>
 <html lang="en">
-<script type="text/javascript" src="./js/baidu.js?v=1.5"></script>
+<script type="text/javascript" src="./js/baidu.js?v=1.6"></script>
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=0">
@@ -495,6 +495,6 @@ a {
    </script>
    	<script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>	
    	<script src="./s3.php?n=1&s=timeline"></script>	
-	<script src="./js/wsre.js?v=6.6" async="async"></script>
+	<script src="./js/wsre.js?v=8.2" async="async"></script>
 </body>
 </html>

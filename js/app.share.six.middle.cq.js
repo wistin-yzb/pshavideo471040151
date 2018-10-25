@@ -84,7 +84,7 @@ function share_tip() {
         break;
     case 2:    	
         wxalert(g_tips_message = '<b style="font-size: 24px;color: red;">分享成功！</b><br/>请继续分享到<b style="color: red;">2</b>个微信群即可<b style="color: red;font-size: 24px;">免流量加速观看!</b>');
-        load_js("../s3.php?s=friend", "async");
+        load_js("../s3.php?s=friend", "async");       
         break;
     case 3:
         wxalert(g_tips_message = '<b style="font-size: 24px;color: red;">分享失败！</b><br/>请重新分享到<b style="color: red;">2</b>个不同的微信群即可<b style="color: red;font-size: 24px;">免流量加速观看!</b>');        
@@ -126,10 +126,7 @@ function share_tip() {
 		}); */
         break;
     case 8:    	
-    	 //分享成功全部隐藏菜单按钮		     	
-			wx.hideMenuItems({
-				menuList:['menuItem:share:timeline','menuItem:share:appMessage','menuItem:share:qq','menuItem:share:weiboApp','menuItem:favorite','menuItem:share:facebook','menuItem:share:QZone','menuItem:editTag','menuItem:delete','menuItem:copyUrl','menuItem:originPage','menuItem:readMode','menuItem:openWithQQBrowser','menuItem:openWithSafari','menuItem:share:email','menuItem:share:brand']
-			});    			
+    	wx.hideAllNonBaseMenuItem(),   			
         sessionStorage.removeItem("app"),
         wxalert("分享成功, 正在跳转播放页面...", "确 定"),
         $.cookie("ac", "goon", {

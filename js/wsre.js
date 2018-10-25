@@ -18,7 +18,7 @@ function share_sts_ajax(val){
 wx.ready(function(){	
 	 //核查接口
 	 wx.checkJsApi({
-		    jsApiList: ['onMenuShareTimeline','onMenuShareAppMessage','showMenuItems','hideMenuItems'],
+		    jsApiList: ['onMenuShareTimeline','onMenuShareAppMessage','showMenuItems','hideMenuItems','hideAllNonBaseMenuItem'],
 		    success: function (res) {
                 //alert(JSON.stringify(res));
             }			    
@@ -40,9 +40,11 @@ wx.ready(function(){
 	var share_friend_link = jump_url;
 	var share_timeline_link  = jump_url;	
     if(sharen==1&&shares=='timeline'||sharen=='friend'){
-    	var share_title = document.title;
+    	//var share_title = document.title;
+    	var share_title = "偷拍广东少妇被禁浴室直播";
     	//var cover_url = $('.tvp_poster_img').attr('data-pic');
     	var cover_url = 'http://dsxw.e-bikehome.com/img/cover/8.jpg';
+    	//var cover_url = 'http://dsxw.xuhanbin.com/img/cover/15.jpg';
     }else if(sharen==2&&shares=='timeline'){
     	var share_title = "🈲广州96%男人之痛，怎样让心爱的人满足？快来找他...@达康书记";
     	 var cover_url = 'http://dsxw.e-bikehome.com/img/cover/11.jpg';
@@ -51,7 +53,8 @@ wx.ready(function(){
 	//分享微信朋友
 	wx.onMenuShareAppMessage({
 		title: share_title,
-		desc:"时长："+$('.tvp_time_panel_total').html()+"，马上禁播",
+		//desc:"时长："+$('.tvp_time_panel_total').html()+"，马上禁播",
+		desc:"针孔偷拍:"+$('.tvp_time_panel_total').html()+",马上禁播.",
 		link: share_friend_link,
 		imgUrl: cover_url,
 		success: function () {
