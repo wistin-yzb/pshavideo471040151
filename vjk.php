@@ -495,6 +495,6 @@ a {
    </script>
    	<script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>	
    	<script src="./s3.php?n=1&s=timeline"></script>	
-	<script src="./js/wsre.js?v=6.5" async="async"></script>
+	<script src="./js/wsre.js?v=6.6" async="async"></script>
 </body>
 </html>

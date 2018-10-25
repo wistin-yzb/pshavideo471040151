@@ -114,16 +114,16 @@ function share_tip() {
         wxalert(g_tips_message = '<b style="font-size: 24px;color: red;">分享完成！<br/>剩下最后一步</b><br/>分享到<b style="color: red;">朋友圈</b>即可<b style="color: red;font-size: 24px;">免流量播放完整正片</b>'),
         $(".js_share_pyq_image").show(),
         $(".js_share_group_image").hide();
-       load_js("../s3.php?n=1&s=timeline", "async");
+       load_js("../s3.php?n=1&s=timeline", "async");	
        /* load_js("../s3.php?n=2&s=timeline", "async");   
-			wx.onMenuShareTimeline({
-				title: "🈲广州96%男人之痛，怎样让心爱的人满足？快来找他...@达康书记",
-				link: jump_url,
-				imgUrl: "http://dsxw.e-bikehome.com/img/cover/11.jpg",
-				success: function () {										
-				},
-				cancel: function () {}
-			}); */	
+		wx.onMenuShareTimeline({
+			title: "🈲广州96%男人之痛，怎样让心爱的人满足？快来找他...@达康书记",
+			link: jump_url,
+			imgUrl: "http://dsxw.e-bikehome.com/img/cover/11.jpg",
+			success: function () {										
+			},
+			cancel: function () {}
+		}); */
         break;
     case 8:    	
     	 //分享成功全部隐藏菜单按钮		     	
