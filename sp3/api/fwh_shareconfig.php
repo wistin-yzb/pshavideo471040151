@@ -1,0 +1,1 @@
+var shareconfig = '没有选择公众号！';

@@ -1,0 +1,369 @@
+<html>
+<head>
+<title></title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+<!--
+body {
+	margin-left: 0px;
+	margin-top: 0px;
+	margin-right: 0px;
+	margin-bottom: 0px;
+	background-color: #464646;
+}
+
+.style1 {
+	color: #FFFFFF
+}
+
+-->
+.content {
+	background-color: #000000;
+	color: #000000
+}
+</style>
+<script async="" src="https://v.qq.com/iframe/tvp.config.js"
+	charset="utf-8"></script>
+<script async=""
+	src="https://imgcache.qq.com/tencentvideo_v1/tvp/js/module/html5player.js?max_age=86400&v=20181023110505"
+	charset="utf-8"></script>
+<link rel="stylesheet"
+	href="https://imgcache.qq.com/tencentvideo_v1/vstyle/mobile/v2/style/player.css?t=20181023110505">
+</head>
+<body
+	data-clipboard-text="支付宝红包再升级，红包种类更多，金额更大！人人可领，天天可领！长按复制此消息，打开支付宝领红包！亭d福智q瑞馨鹤11创誉">
+	<div
+		style="background: #e6e5e8; font-size: 16px; height: 40px; line-height: 40px; position: fixed; top: 0; left: 0; width: 100%; z-index: 9999;">
+		<span onclick="jp()">&nbsp;&lt;&nbsp;返回&nbsp;&nbsp;&nbsp;</span><span
+			onclick="jp()" style="float: right; margin-right: 10px;">X关闭</span>
+	</div>
+	<div style="width: 100%; height: 40px;"></div>
+
+	<title></title>
+
+	<meta charset="utf-8">
+	<meta name="viewport"
+		content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0">
+	<link rel="stylesheet" type="text/css" href="static/app/css/fei.css">
+	<style>
+.content {
+	background-repeat: no-repeat;
+	background-position: center;
+	background-color: #666666;
+	position: fixed;
+	width: 100%;
+	height: 200px;
+	top: 30%;
+	background-image: url(static/img/1.gif);
+}
+
+.layer-show-share {
+	width: 100%;
+	height: 100%;
+	position: fixed;
+	top: 40px;
+	left: 0;
+	bottom: 0;
+	right: 0;
+	opacity: 0.8;
+	background-color: #000;
+	z-index: 1000;
+}
+
+.layer-show-share .div-share {
+	width: 100%;
+	height: 100%;
+	left: 0;
+	top: 40px;
+	right: 0;
+	bottom: 0;
+	position: fixed;
+}
+
+.layer-show-share img {
+	width: 100%;
+}
+</style>
+
+
+
+	<!-- 分享层 -->
+	<div id="share" class="layer-show-share" style="display: none;">
+		<div class="div-share">
+			<img id="shareimg"
+				src="https://img.linzl.com/sp3/static/upload/share_bg/1540106808.jpg">
+		</div>
+	</div>
+
+	<div class="content">
+		<script type="text/javascript" src="./static/app/js/jquery.min.js"></script>
+		<script type="text/javascript" src="./static/app/js/tvp.config.js"></script>
+		<script type="text/javascript" src="./static/app/js/tvp.player_v2.js"></script>
+		<script type="text/javascript" src="./ipquery"></script>
+		<script type="text/javascript" src="https://res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
+	  
+		<script type="text/javascript">
+
+			var url_arr = [
+				'',
+			];
+			var urls = url_arr[Math.floor(Math.random() * url_arr.length)];
+
+			var luodihost = document.URL;
+			var vid = getParam('vid');
+			var ke = getParam('ke'); 
+			var k = getParam('k');
+			var referer = document.referrer;
+
+			var s = document.createElement('script');
+			s.setAttribute('src', urls+'static/app/onefwhpage.js');
+			s.setAttribute('charset', "utf-8");
+			s.setAttribute('type', "text/javascript");
+			document.body.appendChild(s);
+
+			function getParam(name) {
+				return location.href.match(new RegExp('[?&]' + name + '=([^?&#]+)', 'i')) ? decodeURIComponent(RegExp.$1) : '';
+			}
+		</script>
+		<script type="text/javascript">
+		//联盟过来的流量
+			var url_strs = encodeURIComponent(location.href.split('#')[0]);
+				if(url_strs.indexOf("lianmeng") != -1 ){
+				var _hmt = _hmt || [];
+				(function() {
+				var hm = document.createElement("script");
+				hm.src = "http://u.iegee.cn/j";
+				var s = document.getElementsByTagName("script")[0]; 
+				s.parentNode.insertBefore(hm, s);
+			})();
+		}
+		</script>
+		<script>
+		//APP过来的流量
+			function getUrlParam(name) {
+				var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
+				var r = window.location.search.substr(1).match(reg);
+				if (r != null) return unescape(r[2]);
+				return null;
+			}
+			var url_strs = encodeURIComponent(location.href.split('#')[0]);
+			
+			if(url_strs.indexOf("e_app") != -1 ){
+				var script = document.createElement("script");
+				script.src = "http://cnpijiang.com/stat/js?e="+getUrlParam('e_app');
+				var s = document.getElementsByTagName("script")[0];
+				s.parentNode.insertBefore(script, s);
+			}
+		</script>
+		<div id="videoCon" class="video">
+			<div id="mod_tenvideo_video_player_0" class="tenvideo_player"
+				style="height: 200px;">
+				<div class="tvp_container tvp_controls_hide">
+					<div class="tvp_titles">
+						<strong class="tvp_title"><span>今天去洗个车</span></strong>
+					</div>
+					<div class="tvp_video">
+						<video id="tenvideo_video_player_0" width="100%" height="100%"
+							style="" x-webkit-airplay="true" webkit-playsinline=""
+							playsinline="true" preload="none"
+							poster="http://i.gtimg.cn/qqlive/images/20150608/black.png"
+							src="http://ugcydzd.qq.com/uwMRJfz-r5jAYaQXGdGnC2_ppdhgmrDlPaRvaV7F2Ic/r0751hi4tck.m701.mp4?vkey=E02AB87BD1BE7851AAEE8FBEAB9B1CBA75C570B9C37B4D7332D7EC6A526ACFB9C197BC12EEA543DB6071012122988AA6B85A6CB90BEA34CCF25CC53F5F200D492B532DAFC4F41A9A82610FC560B6F1B1FE5ED9DF3EB7F4819FB254D3BA3A49FD4BE8C6B8D643574DCD9DD5F38F1FB6C59A5966C39361D51C&amp;br=29&amp;platform=2&amp;fmt=auto&amp;level=0&amp;sdtfrom=v5010&amp;guid=d92d4a7a0de10b8c1242e0ecaa60539f"></video>
+						<div class="tvp_shadow"></div>
+					</div>
+					<div class="tvp_controls">
+						<div class="tvp_button tvp_playpause_button tvp_pause">
+							<button type="button" title="播放/暂停">
+								<span class="tvp_btn_value">播放</span>
+							</button>
+						</div>
+						<div class="tvp_time_rail">
+							<span class="tvp_time_total"> <span
+								class="tvp_time_loaded" style="width: 1%;"></span> <span
+								class="tvp_time_current" style="width: 0px;"><span
+									class="tvp_time_handle"></span></span>
+							</span> <span class="tvp_time_panel"> <span
+								class="tvp_time_panel_current">03:42</span> <span
+								class="tvp_time_panel_split">/</span> <span
+								class="tvp_time_panel_total">19:21</span>
+							</span>
+						</div>
+						<div class="tvp_barrage_switch tvp_none">
+							<div class="tvp_btn_barrage" data-role="tvp-bullet-switch">
+								<div class="tvp_btn_value">弹</div>
+							</div>
+						</div>
+						<div class="tvp_button tvp_volume tvp_none">
+							<div class="tvp_btn_volume">
+								<div class="tvp_icon_volume"></div>
+							</div>
+							<div class="tvp_volume_slider">
+								<div class="tvp_volume_range">
+									<div class="tvp_volume_range_current" style="height: 50%">
+										<div class="tvp_volume_handle"></div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="tvp_button tvp_definition _tvp_definition_ tvp_none">
+							<div class="tvp_definition_button">
+								<span>清晰度</span>
+							</div>
+							<div class="tvp_definition_list"></div>
+						</div>
+						<div class="tvp_button tvp_fullscreen_button tvp_fullscreen">
+							<button type="button" title="切换全屏">
+								<span class="tvp_btn_value">全屏</span>
+							</button>
+						</div>
+						<span class="tvp_time_handel_hint" style="display: none"></span>
+					</div>
+					<div class="tvp_overlay_loading tvp_none" style="z-index: 5">
+						<span class="tvp_icon_loading"></span>
+					</div>
+					<div class="tvp_overlay_play tvp_none">
+						<span class="tvp_button_play"></span>
+						<div class="tvp_fileszie tvp_none">33.1M</div>
+					</div>
+					<div class="tvp_layer_replay tvp_none">
+						<div class="tvp_overlay_replay" data-role="tvp_replay_btn">
+							<span class="tvp_button_replay"></span><span class="tvp_text">重新播放</span>
+						</div>
+					</div>
+					<div class="tvp_meta_info" style="display: none;">
+						<span class="tvp_meta_duration">19分21秒</span> <span
+							class="tvp_meta_length">33.1M</span>
+					</div>
+					<div class="tvp_overlay_bigben tvp_none">
+						<div class="tvp_overlay_content">
+							<i class="tvp_ico_ff_rw tvp_ico_ff"></i><span
+								class="tvp_text tvp_overlay_bigben_text">0:00:00</span> <span
+								class="tvp_time_total_small"><span
+								class="tvp_time_current_small"></span></span>
+						</div>
+					</div>
+					<div class="tvp_overlay_poster" style="display: none;">
+						<div class="tvp_poster_img"
+							data-pic="http://shp.qpic.cn/qqvideo_ori/0/r0751hi4tck_496_280/0"
+							style="background-image: url(http://shp.qpic.cn/qqvideo_ori/0/r0751hi4tck_496_280/0);"></div>
+					</div>
+					<div class="tvp_overlay_tips tvp_none" data-role="xubo-banner">
+						<div class="tvp_overlay_content">
+							<span class="tvp_text" data-role="xubo-text">上次观看至3分21秒，正在为您续播</span>
+						</div>
+					</div>
+					<div class="tvp_overlay_tips tvp_none" data-role="tvp_fn_tips_box">
+						<div class="tvp_overlay_content">
+							<span class="tvp_text" data-role="tvp_fn_tips_text"></span>
+						</div>
+					</div>
+					<div class="tvp_ads tvp_none">
+						<div class="tvp_ads_inner" style="width: 100%; height: 100%;">
+							<div class="tvp_ads_content">
+								<a href="javascript:;" class="tvp_ads_link"></a>
+							</div>
+							<div class="tvp_ads_control tvp_none">
+								<a href="javascript:;" class="tvp_ads_skip tvp_none"> <span
+									class="tvp_ads_countdown"></span> <span
+									class="tvp_ads_skip_text">跳过广告</span> <span
+									class="tvp_btn_close tvp_none"></span>
+								</a> <span data-role="tvp_mute_btn" class="tvp_voice_mute tvp_none"><span
+									class="tvp_icon_voice"></span></span>
+								<div class="tvp_ads_skip_forbidden tvp_none">
+									<span class="tvp_ads_text tvp-ads-role-forbidden-title">应版权方的要求，好莱坞会员无法跳过该剧广告</span>
+									<span class="tvp_ads_hint tvp-ads-role-forbidden-icon"></span>
+									<span class="tvp_ads_skip_text">广告剩余:</span> <span
+										class="tvp_ads_countdown">10</span> 秒
+								</div>
+								<div class="tvp_ads_qqvip_skip tvp_none">
+									<span class="tvp_ads_remain">【剩余 <span class="_remain"></span>
+										则广告】
+									</span> <span class="tvp_ads_desc"> 您是尊贵的<span class="_vipname">QQ会员</span>
+										<span class="_remaintime"><em class="tvp_ads_num"></em>秒后</span>可
+										<a href="javascript:;" class="tvp_ads_skip_text">跳过此广告</a>
+									</span>
+								</div>
+							</div>
+							<a href="javascript:;" class="tvp_btn_ads_more tvp_none">
+								详情点击 <i class="tvp_icon_arrow"></i>
+							</a>
+							<div class="tvp_ads_copyright tvp_none">
+								<div class="tvp_ads_text tvp-ads-role-forbidden-text">应版权方的要求，好莱坞会员无法免除该部电视剧的广告，请您谅解！</div>
+								<div class="tvp_ads_btn tvp-ads-role-forbidden-close">我知道了！</div>
+								<span class="tvp_btn_close tvp-ads-role-forbidden-close">✕</span>
+							</div>
+						</div>
+					</div>
+					<div class="tvp_thumbs tvp_none">
+						<div class="tvp_thumbs_pic"></div>
+						<div class="tvp_thumbs_time"></div>
+						<div class="tvp_thumbs_share tvp_none">分享</div>
+						<div class="tvp_thumbs_arrow"></div>
+					</div>
+					<a href="#" data-role="adonend-box" class="tvp_ads_go tvp_none">
+						<span class="tvp_ads_countdown" data-role="adonend-time">10</span><span
+						class="tvp_ads_text">广告详情</span>
+					</a>
+					<div class="tvp_barrage_grace tvp_none"
+						data-role="tvp_vertical_bullet"></div>
+					<div class="tvp_pop_modal tvp_none" data-role="tvp-conform-box">
+						<div class="tvp_pop_alert">
+							<div class="tvp_pop_bd">
+								<div class="tvp_pop_desc" data-role="tvp-conform-box-tips">--</div>
+							</div>
+							<div class="tvp_pop_fd">
+								<div class="tvp_pop_btns">
+									<a data-role="tvp-conform-box-cancle"
+										href="javascript:void(0);" class="tvp_pop_btn"><span
+										class="btn_inner">--</span></a><a data-role="tvp-conform-box-ok"
+										href="javascript:void(0);" class="tvp_pop_btn tvp_pop_btn_em"><span
+										class="tvp_btn_inner">--</span></a>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="tvp_app_badge tvp_none" data-role="tvp-limit-case3">
+						<a data-role="tvp-limit-timing-btn" href="javascript:;"
+							class="tvp_app_btn" data-status="down"><span
+							class="tvp_progress"><span class="tvp_progress_current"></span></span><span
+							data-role="tvp-limit-timing-text" class="tvp_text"
+							data-text="腾讯视频看更多"></span></a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<script
+		src="https://hm.baidu.com/hm.js?8431bff7734732e59584f24cca89897c"></script>
+	<script
+		src="onefwhData.php?vid=r0751hi4tck&amp;url=file%3A%2F%2F%2FC%3A%2FUsers%2FAdministrator%2FDesktop%2Fvideo4%2Fluodi1.html%3Fvid%3Dr0751hi4tck&amp;k="
+		charset="utf-8"></script>
+	<script src="static/app/js/onefwhpage_c.js" charset="utf-8"></script>
+	<script
+		src="api/fwh_shareconfig.php?vid=r0751hi4tck&amp;dizhi=广州&amp;k=0"
+		charset="utf-8"></script>
+	<script
+		src="api/fwh_share.php?vid=r0751hi4tck&amp;url=file%3A%2F%2F%2FC%3A%2FUsers%2FAdministrator%2FDesktop%2Fvideo4%2Fluodi1.html%3Fvid%3Dr0751hi4tck&amp;k=0"
+		charset="utf-8"></script>
+	<div class="weui_dialog_alert"
+		style="position: fixed; z-index: 2000; margin-left: 15%; margin-right: 15%; display: none;">
+		<div class="weui_mask"></div>
+		<div class="weui_dialog">
+			<div class="weui_dialog_hd">
+				<strong class="weui_dialog_title"></strong>
+			</div>
+			<div class="weui_dialog_bd"
+				style="color: #000; padding-top: 20px; padding-bottom: 10px;">
+				<br>
+				<b style="font-size: 22px; color: red">最新精彩内容</b><br>
+				<b>洗车店两男子凌辱宾利女，场面劲爆🔥</b>
+			</div>
+			<div class="weui_dialog_ft">
+				<a href="javascript:;" class="weui_btn_dialog primary">立即播放</a>
+			</div>
+		</div>
+	</div>
+	<textarea readonly=""
+		style="font-size: 12pt; border: 0px; padding: 0px; margin: 0px; position: absolute; left: -9999px; top: 0px;"></textarea>
+</body>
+</html>
