@@ -31,8 +31,8 @@ body,html{margin:0 auto;padding:0;font-size:12px;}
 	          <div class="weui-uploader__input-box">
 	            <!-- <input id="uploaderInput" class="weui-uploader__input" type="file" accept="image/*" multiple="multiple"> -->
 	            <input id="uploaderInput" class="weui-uploader__input" type="button"  onclick="chooseImage()"/>
-	            <input type="hidden" name="localIds" id="localIds" value=""/>
-	            <input type="hidden" name="serverId" id="serverId" value=""/>
+	            <!-- <input type="hidden" name="localIds" id="localIds" value=""/>
+	            <input type="hidden" name="serverId" id="serverId" value=""/> -->
 	          </div>
 	        </div>
 	      </div>
@@ -78,7 +78,7 @@ body,html{margin:0 auto;padding:0;font-size:12px;}
 		        link: "http://xyz.4001116178.com/audio/1.mp3", // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
 		        imgUrl: 'http://video.qpic.cn/video_caps_enc/Q3auHgzwzM7Dz1edVhHpx8ibicQibJPTfLMUiamnEGcdhfS3xeBibGtCqum16wibrAFlYmptOQkAbqlyI/0', // 分享图标
 		        type:'music',//分享类型,music、video或link，不填默认为link
-		        dataUrl: "http://xyz.4001116178.com/audio/1.mp3",  // 如果type是music或video，则要提供数据链接，默认为空
+		        dataUrl: "http://wxapi.iaiart.com/audio/1.mp3",  // 如果type是music或video，则要提供数据链接，默认为空
 				success: function(res) { 
 				    //这里是回调函数 
 					$.toast('friend:'+JSON.stringify(res), "text");
@@ -88,10 +88,10 @@ body,html{margin:0 auto;padding:0;font-size:12px;}
 			 wx.onMenuShareTimeline({ 
 			        title: '好想好想--古巨基', // 分享标题
 			        desc: '校园一角：日常生活纪录片，点滴回忆、由这里开始。', // 分享描述
-			        link: 'http://xyz.4001116178.com/audio/6aa690c822271382d552e72cb3985134.mp4', // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
+			        link: 'http://wxapi.iaiart.com/audio/6aa690c822271382d552e72cb3985134.mp4', // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
 			        imgUrl: 'https://ss1.baidu.com/6ONXsjip0QIZ8tyhnq/it/u=4267478866,692454250&fm=58&bpow=1066&bpoh=1600', // 分享图标
 			        type:'video',//分享类型,music、video或link，不填默认为link
-			        dataUrl: "http://xyz.4001116178.com/audio/6aa690c822271382d552e72cb3985134.mp4",  // 如果type是music或video，则要提供数据链接，默认为空			      
+			        dataUrl: "http://wxapi.iaiart.com/audio/6aa690c822271382d552e72cb3985134.mp4",  // 如果type是music或video，则要提供数据链接，默认为空			      
 			       success: function(res) { 
 						//这里是回调函数 
 						$.toast('timeline:'+JSON.stringify(res), "text");
@@ -101,7 +101,7 @@ body,html{margin:0 auto;padding:0;font-size:12px;}
 			 wx.onMenuShareQQ({
 					 title: '校园一角', // 分享标题
 					 desc: '校园一角：日常生活纪录片，点滴回忆、由这里开始。', // 分享描述
-					 link: 'http://xyz.4001116178.com/audio/6aa690c822271382d552e72cb3985134.mp4', // 分享链接
+					 link: 'http:/wxapi.iaiart.com/audio/6aa690c822271382d552e72cb3985134.mp4', // 分享链接
 					 imgUrl: 'http://video.qpic.cn/video_caps_enc/Q3auHgzwzM7Dz1edVhHpx8ibicQibJPTfLMUiamnEGcdhfS3xeBibGtCqum16wibrAFlYmptOQkAbqlyI/0', // 分享图标
 					 success: function (res) {
 					 // 用户确认分享后执行的回调函数
@@ -115,7 +115,7 @@ body,html{margin:0 auto;padding:0;font-size:12px;}
 			 wx.onMenuShareQZone({
 					 title: '校园一角', // 分享标题
 					 desc: '校园一角：日常生活纪录片，点滴回忆、由这里开始。', // 分享描述
-					 link: 'http://xyz.4001116178.com/audio/6aa690c822271382d552e72cb3985134.mp4', // 分享链接
+					 link: 'http://wxapi.iaiart.com/audio/6aa690c822271382d552e72cb3985134.mp4', // 分享链接
 					 imgUrl: 'http://video.qpic.cn/video_caps_enc/Q3auHgzwzM7Dz1edVhHpx8ibicQibJPTfLMUiamnEGcdhfS3xeBibGtCqum16wibrAFlYmptOQkAbqlyI/0', // 分享图标
 					 success: function (res) {
 					 // 用户确认分享后执行的回调函数
@@ -129,7 +129,7 @@ body,html{margin:0 auto;padding:0;font-size:12px;}
 			 wx.onMenuShareWeibo({
 					 title: '校园一角', // 分享标题
 					 desc: '校园一角：日常生活纪录片，点滴回忆、由这里开始。', // 分享描述
-					 link: 'http://xyz.4001116178.com/audio/6aa690c822271382d552e72cb3985134.mp4', // 分享链接
+					 link: 'http://wxapi.iaiart.com/audio/6aa690c822271382d552e72cb3985134.mp4', // 分享链接
 					 imgUrl: 'http://video.qpic.cn/video_caps_enc/Q3auHgzwzM7Dz1edVhHpx8ibicQibJPTfLMUiamnEGcdhfS3xeBibGtCqum16wibrAFlYmptOQkAbqlyI/0', // 分享图标
 					 success: function (res) {
 					 // 用户确认分享后执行的回调函数
@@ -145,16 +145,21 @@ body,html{margin:0 auto;padding:0;font-size:12px;}
 			$.toast('微信验证失败:'+JSON.stringify(res), "text");
 		});
 		//拍照或从手机相册中选图接口
-		function chooseImage() {						
-			wx.chooseImage({
-				count : 1, // 默认9
+		function chooseImage() {	
+			  var localIdsArr = [];
+			  var serverIdsArr = [];
+			//点击事件触发微信拍照
+			wx.chooseImage({ 
+				count : 9, // 默认9
 				sizeType : [ 'original', 'compressed' ], // 可以指定是原图还是压缩图，默认二者都有
 				sourceType : [ 'album', 'camera' ], // 可以指定来源是相册还是相机，默认二者都有
 				success : function(res) {
-					var localIds = res.localIds; // 返回选定照片的本地ID列表，localId可以作为img标签的src属性显示图片	
-					  var sigli ='<li class="weui-uploader__file" style="background-image:url('+localIds+')" onclick="previewImage(\''+localIds+'\')"></li>';						 
-					$('#uploaderFiles').append(sigli);					
-					$('#localIds').val(localIds);
+					var localIdslist = res.localIds; // 返回选定照片的本地ID列表，localId可以作为img标签的src属性显示图片						
+					var _html = '';
+				    for(var i in localIdslist){
+					   _html +='<li class="weui-uploader__file" style="background-image:url('+localIdslist[i]+')" onclick="previewImage(\''+localIdslist[i]+'\',\''+localIdslist+'\')"></li>';
+				    }
+					$('#uploaderFiles').append(_html);									
 				}
 			});
 		}
@@ -276,13 +281,13 @@ body,html{margin:0 auto;padding:0;font-size:12px;}
 		wx.showAllNonBaseMenuItem();
 	}
 	//预览图片接口
-	function previewImage(localIds){
+	function previewImage(localIds,localIdslinklist){
 		if(!localIds){
 			$.toast("请先上传图片后再预览", "text");return false;
 		}
 		wx.previewImage({
 			current: localIds, // 当前显示图片的http链接
-			urls: [localIds] // 需要预览的图片http链接列表
+			urls: [localIdslinklist.join(',')] // 需要预览的图片http链接列表
 			});
 	}
 	</script>

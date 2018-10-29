@@ -3,8 +3,8 @@ $appid = 'wxf10fc84ec2880cc8';
 $appsecret = 'eaab7b2972dea4beb1ac26f5acd12535';
 $timestamp = time();
 $noncestr = get_random_str(16);
-$domain = "http://xyz.4001116178.com/wx.html";
-$short_domain = '4001116178.com';
+$domain = "http://wxapi.iaiart.com/wx.html";
+$short_domain = 'iaiart.com';
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////
 $demo_cache = 'demo_cache/' . $short_domain . '-' . date('m-d-H') . '.txt';
@@ -95,7 +95,7 @@ function pre($array){
 }
 ?>
 wx.config({
-	debug: true,
+	debug: false,
 	appId: '<?php echo $appid;?>',
 	timestamp: '<?php echo $timestamp;?>',
 	nonceStr: '<?php echo $noncestr;?>',
