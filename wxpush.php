@@ -30,14 +30,16 @@ if($wxpush_access_token_txt&&$wxpush_expire_time_txt>time()){
 $img_list = array();
 if(is_array($media_list)){		
 	foreach ($media_list as $k=>$v){		
-		$media_url = "https://api.weixin.qq.com/cgi-bin/media/get?access_token=$access_token&media_id=$v";				
+		$media_url = "http://file.api.weixin.qq.com/cgi-bin/media/get?access_token=$access_token&media_id=$v";				
 		$fileInfo = https_request($media_url);	
 		$imgtype = explode('/',$fileInfo['header']['content_type']);
 		$filename = 'wxloadimg/wxd'.rand(10000,99999).time().$k.'.'.$imgtype[1];
 		saveWeixinFile($filename,$fileInfo['body']);		
+		$img_list[$k] = $filename;
 	}
 }
-echo json_encode('download complate!');
+file_put_contents('wxpush.txt', json_encode($img_list));
+echo json_encode($img_list);
 
 //远程数据请求方法
 function https_request($url,$data = NULL)

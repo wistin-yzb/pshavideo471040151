@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
 <title>拍照或从手机相册中选图接口</title>
-<link rel="stylesheet" href="https://cdn.bootcss.com/weui/1.1.3/style/weui.min.css">
+<link rel="stylesheet" href="https://cdn.bootcss.com/weui/1.1.3/style/weui.min.css?v=3.0">
 <link rel="stylesheet" href="https://cdn.bootcss.com/jquery-weui/1.2.1/css/jquery-weui.min.css">
 <style>
 body,html{margin:0 auto;padding:0;font-size:12px;}
@@ -13,7 +13,8 @@ body,html{margin:0 auto;padding:0;font-size:12px;}
 .imglist .imgu{margin:0;padding:0;border:1px solid #ddd;}
 .imglist .imgu .imgli{border:1px solid red;margin:10px 0;border-radius:10px;}
 .padwr{padding:0px;}
-
+.delimg-btn{width:20px;position:absolute;right:0;top:0;}
+.relap{position:relative;}
 </style>
 </head>
 <body>
@@ -27,7 +28,10 @@ body,html{margin:0 auto;padding:0;font-size:12px;}
 	        </div>
 	        <div class="weui-uploader__bd">
 	          <ul class="weui-uploader__files" id="uploaderFiles">
-	          	<!--  <li class="weui-uploader__file" style="background-image:url(./img/true.jpg)" onclick="previewImage('./img/true.jpg')"></li> -->	          	
+	          	<!-- <li class="weui-uploader__file relap" style="background-image:url(./img/true.jpg);" onclick="previewImage('./img/true.jpg')">
+	          	<img src="./img/del.jpg"  class="delimg-btn" onclick="delImage(this)">	          	
+	          	</li> -->
+	              	
 	          </ul>
 	          <div class="weui-uploader__input-box">
 	            <!-- <input id="uploaderInput" class="weui-uploader__input" type="file" accept="image/*" multiple="multiple"> -->
@@ -148,41 +152,50 @@ body,html{margin:0 auto;padding:0;font-size:12px;}
 			$.toast('微信验证失败:'+JSON.stringify(res), "text");
 		});
 		////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-		 var localIdsArr = []; //用来存放localIds
-	     var serverIdsArr = []; //用来存放serverIds
 		//api1：拍照或从手机相册中选图接口
+		 var localIdsArr = []; //用来存放localIds
+		 var serverIdsArr = []; //用来存放serverIds		
 		function chooseImage() {			
 	    	 //每次都要验证还能上传几张图片,最多不超过9张
 	    	 var sy = $('#uploaderFiles>li').length;
 	    	 if(sy>=9){
 	    		 $.toast('超出最大限制9张', "text");return false;
 	    	 }
-			//点击事件触发微信拍照
+			//点击事件触发微信拍照			
 			wx.chooseImage({ 
 				count : 9-sy, // 默认9
-				sizeType : [ 'original', 'compressed' ], // 可以指定是原图还是压缩图，默认二者都有
-				sourceType : [ 'album', 'camera' ], // 可以指定来源是相册还是相机，默认二者都有
+				//sizeType : [ 'original', 'compressed' ], // 可以指定是原图还是压缩图，默认二者都有
+				sizeType : ['compressed' ],
+				//sourceType : [ 'album', 'camera' ], // 可以指定来源是相册还是相机，默认二者都有
+				sourceType : [ 'album' ],
 				success : function(res) {
 					var localIdslist = res.localIds; // 返回选定照片的本地ID列表，localId可以作为img标签的src属性显示图片		
 					var _html = '';
-				    for(var i in localIdslist){
-					   _html +='<li class="weui-uploader__file" style="background-image:url(\''+localIdslist[i]+'\')" data-src=\''+localIdslist[i]+'\' onclick="previewImage(\''+localIdslist[i]+'\')"></li>';		
+				    for(var i in localIdslist){					  					   
 					 //上传图片到微信服务器
-						wx.uploadImage({
+						 wx.uploadImage({
 							localId: localIdslist[i], // 需要上传的图片的本地ID，由chooseImage接口获得
 							isShowProgressTips: 1, // 默认为1，显示进度提示
 							success: function (res_server) {
-								serverIdsArr.push(res_server.serverId); // 返回图片的服务器端ID										
-							    $('#serverIds').val(serverIdsArr.join(','));
+								serverIdsArr.push(res_server.serverId); // 返回图片的服务器端ID		
 							},fail: function(res_server){
 								alert('error：'+JSON.stringify(res_server));
 							}
 						});
+						 _html +='<li class="weui-uploader__file relap" style="background-image:url(\''+localIdslist[i]+'\')" data-serverindex=\''+i+'\'  data-src=\''+localIdslist[i]+'\' onclick="previewImage(\''+localIdslist[i]+'\')"><img src="./img/del.jpg"  class="delimg-btn" onclick="delImage(this)"></li>';
 				    }				    
-					$('#uploaderFiles').append(_html);									
+					$('#uploaderFiles').append(_html);								
 				}
 			});
 		}
+	     function delImage(obj){	 	
+	    	 var removeServerIndex = $(obj).parent().attr('data-serverindex');	    	 
+	    	 if (removeServerIndex > -1) {
+	    		 serverIdsArr.splice(removeServerIndex, 1);
+	    	 }
+	    	 $(obj).parent().remove();
+	    	 event.stopPropagation(); 
+	     }
 		//api2：预览图片接口
 		function previewImage(localIds){			
 			if(!localIds){
@@ -240,13 +253,16 @@ body,html{margin:0 auto;padding:0;font-size:12px;}
 			});
 		}
 		//从微信服务器下载图片到应用服务器
-		function pushServerIds(){
-		    var serverIds = $('#serverIds').val();
+		function pushServerIds(){			
+		    var serverIds = serverIdsArr.join(',');	
 		    if(!serverIds){
 				$.toast("请先上传图片", "text");return false;
 			}
-		    $.post("./wxpush.php",{serverIds:serverIds},function(result){		         
-		          $.toast(JSON.stringify(result), "text");
+		    $.showLoading("正在处理...");
+		    $.post("./wxpush.php",{serverIds:serverIds},function(result){	
+		    	$.hideLoading();   
+		          $.toast('提交成功!'+JSON.stringify(result), "text");
+		          window.location.reload();
 		      });
 		}		
 		////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -321,6 +337,6 @@ body,html{margin:0 auto;padding:0;font-size:12px;}
 		$.toast("显示所有功能按钮", "text");
 		wx.showAllNonBaseMenuItem();
 	}	
-	</script>
+	</script>	
 </body>
 </html>
